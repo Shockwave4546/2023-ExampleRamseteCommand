@@ -39,23 +39,23 @@ public class RobotContainer {
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
 
   // The driver's controller
-  XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
+  // XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
-    configureButtonBindings();
+    // configureButtonBindings();
 
     // Configure default commands
     // Set the default drive command to split-stick arcade drive
-    m_robotDrive.setDefaultCommand(
-        // A split-stick arcade command, with forward/backward controlled by the left
-        // hand, and turning controlled by the right.
-        new RunCommand(
-            () ->
-                m_robotDrive.arcadeDrive(
-                    -m_driverController.getLeftY(), -m_driverController.getRightX()),
-            m_robotDrive));
+    // m_robotDrive.setDefaultCommand(
+    //     // A split-stick arcade command, with forward/backward controlled by the left
+    //     // hand, and turning controlled by the right.
+    //     new RunCommand(
+    //         () ->
+    //             m_robotDrive.arcadeDrive(
+    //                 -m_driverController.getLeftY(), -m_driverController.getRightX()),
+    //         m_robotDrive));
   }
 
   /**
@@ -66,9 +66,9 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     // Drive at half speed when the right bumper is held
-    new JoystickButton(m_driverController, Button.kRightBumper.value)
-        .onTrue(new InstantCommand(() -> m_robotDrive.setMaxOutput(0.5)))
-        .onFalse(new InstantCommand(() -> m_robotDrive.setMaxOutput(1)));
+    // new JoystickButton(m_driverController, Button.kRightBumper.value)
+    //     .onTrue(new InstantCommand(() -> m_robotDrive.setMaxOutput(0.5)))
+    //     .onFalse(new InstantCommand(() -> m_robotDrive.setMaxOutput(1)));
   }
 
   /**
@@ -103,7 +103,8 @@ public class RobotContainer {
             // Start at the origin facing the +X direction
             new Pose2d(0, 0, new Rotation2d(0)),
             // Pass through these two interior waypoints, making an 's' curve path
-            List.of(new Translation2d(1, 1), new Translation2d(2, -1)),
+            List.of(),
+            // List.of(new Translation2d(1, 1), new Translation2d(2, -1)),
             // End 3 meters straight ahead of where we started, facing forward
             new Pose2d(3, 0, new Rotation2d(0)),
             // Pass config
